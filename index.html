@@ -3,89 +3,147 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز التوفير - القائمة الكاملة</title>
+    <title>مركز التوفير - عرما-المافود</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; margin: 0; padding-bottom: 140px; }
-        .header { background: #8b0000; color: white; padding: 15px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        h2 { margin-right: 15px; color: #8b0000; border-right: 4px solid #8b0000; padding-right: 10px; font-size: 1.1rem; margin-top: 20px; }
-        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 15px; }
-        .scroll-container::-webkit-scrollbar { display: none; }
-        .product-card { background: white; min-width: 160px; max-width: 160px; padding: 10px; border-radius: 12px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,0.1); transition: 0.3s; }
-        .product-card img { width: 100%; height: 130px; border-radius: 8px; object-fit: cover; margin-bottom: 10px; }
-        .product-card h3 { font-size: 0.95rem; margin: 5px 0; height: 40px; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #333; }
-        .price { color: #27ae60; font-weight: bold; margin-bottom: 8px; display: block; font-size: 1.1rem; }
-        .add-btn { background: #8b0000; color: white; border: none; padding: 10px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; }
-        .remove-btn { background: #eeeeee; color: #cc0000; border: 1px solid #cc0000; padding: 6px; border-radius: 8px; width: 100%; margin-top: 8px; cursor: pointer; display: none; font-size: 0.85rem; font-weight: bold; }
-        .footer-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px 0; box-shadow: 0 -4px 12px rgba(0,0,0,0.15); text-align: center; z-index: 2000; border-radius: 20px 20px 0 0; }
-        .total-text { font-weight: bold; margin-bottom: 10px; font-size: 1rem; color: #444; }
-        .confirm-btn { background: #8b0000; color: white; border: none; width: 90%; padding: 16px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; }
+        :root { --primary: #8b0000; --secondary: #27ae60; --light: #fdf2f2; }
+        body { font-family: 'Cairo', sans-serif; background-color: #f4f4f4; margin: 0; padding-bottom: 150px; }
+        
+        .header { background: var(--primary); color: white; padding: 20px 15px 10px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); border-radius: 0 0 20px 20px; }
+        .header h1 { margin: 0; font-size: 1.5rem; }
+        .header .sub-title { margin: 2px 0 10px; font-size: 0.9rem; font-weight: bold; color: #ffcccc; opacity: 0.9; }
+        
+        /* تصميم شريط البحث */
+        .search-container { padding: 0 15px 10px; }
+        #searchInput { width: 100%; padding: 10px 15px; border-radius: 25px; border: none; outline: none; font-family: 'Cairo'; font-size: 0.9rem; box-sizing: border-box; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1); }
+
+        h2 { margin-right: 15px; color: var(--primary); border-right: 5px solid var(--primary); padding-right: 10px; font-size: 1.1rem; margin-top: 20px; }
+        
+        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 15px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+        .scroll-container::-webkit-scrollbar { display: none; } 
+        
+        .product-card { background: white; min-width: 160px; max-width: 160px; padding: 12px; border-radius: 15px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.05); border: 1px solid #eee; transition: 0.3s; }
+        .product-card img { width: 100%; height: 120px; border-radius: 10px; object-fit: cover; margin-bottom: 8px; }
+        .product-card h3 { font-size: 0.9rem; margin: 5px 0; height: 38px; color: #333; font-weight: bold; display: flex; align-items: center; justify-content: center; line-height: 1.2; }
+        
+        .price { color: var(--secondary); font-weight: bold; margin-bottom: 8px; display: block; font-size: 1rem; }
+        
+        .add-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; font-family: 'Cairo'; font-size: 0.85rem; }
+        
+        .remove-btn { background: #fff; color: var(--primary); border: 1px solid var(--primary); padding: 5px; border-radius: 8px; width: 100%; margin-top: 5px; cursor: pointer; display: none; font-size: 0.8rem; font-weight: bold; font-family: 'Cairo'; }
+        
+        .footer-bar { position: fixed; bottom: 0; left: 0; width: 100%; background: white; padding: 15px 0; box-shadow: 0 -4px 15px rgba(0,0,0,0.15); text-align: center; z-index: 2000; border-radius: 20px 20px 0 0; }
+        .total-text { font-weight: bold; margin-bottom: 8px; font-size: 0.95rem; color: #444; }
+        
+        .confirm-btn { background: var(--primary); color: white; border: none; width: 85%; padding: 14px; border-radius: 12px; font-weight: bold; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 auto; font-family: 'Cairo'; }
+        
+        /* إخفاء الأقسام إذا لم توجد نتائج بحث */
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1 style="margin:0; font-size: 1.5rem;">مركز التوفير 🛒</h1>
-</div>
-
-<h2>✨ قسم الكماليات</h2>
-<div class="scroll-container">
-    <div class="product-card" id="item1">
-        <img src="https://i.ibb.co/hwmKdrJ/Screenshot-1.jpg">
-        <h3>فيمتو معا قشطه</h3>
-        <span class="price">4000 ريال</span>
-        <button class="add-btn" onclick="addItem('فيمتو معا قشطه', 4000, 'item1')">إضافة للسلة ➕</button>
-        <button class="remove-btn" id="btn-item1" onclick="removeItem('item1')">إلغاء الطلب ✖</button>
-    </div>
-    <div class="product-card" id="item2">
-        <img src="https://i.ibb.co/Y4jDNNxX/1771235293952-1.jpg">
-        <h3>كنافه العجيبه</h3>
-        <span class="price">1300 ريال</span>
-        <button class="add-btn" onclick="addItem('كنافه العجيبه', 1300, 'item2')">إضافة للسلة ➕</button>
-        <button class="remove-btn" id="btn-item2" onclick="removeItem('item2')">إلغاء الطلب ✖</button>
+    <h1>مركز التوفير 🛒</h1>
+    <div class="sub-title">عرما - المافود</div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="ابحث عن منتج..." onkeyup="filterProducts()">
     </div>
 </div>
 
-<h2>🧴 قسم العناية</h2>
-<div class="scroll-container">
-    <div class="product-card" id="item3">
-        <img src="https://i.ibb.co/scVNQtx/1771265153960.png">
-        <h3>كريم كلير مرطب</h3>
-        <span class="price">3500 ريال</span>
-        <button class="add-btn" onclick="addItem('كريم كلير مرطب', 3500, 'item3')">إضافة للسلة ➕</button>
-        <button class="remove-btn" id="btn-item3" onclick="removeItem('item3')">إلغاء الطلب ✖</button>
+<div id="main-content">
+    <div class="category-block" data-name="الكماليات">
+        <h2>✨ قسم الكماليات</h2>
+        <div class="scroll-container">
+            <div class="product-card" data-title="فيمتو مع قشطة" id="item1">
+                <img src="https://i.ibb.co/hwmKdrJ/Screenshot-1.jpg">
+                <h3>فيمتو مع قشطة</h3>
+                <span class="price">4000 ريال</span>
+                <button class="add-btn" onclick="addItem('فيمتو مع قشطة', 4000, 'item1')">إضافة للسلة ➕</button>
+                <button class="remove-btn" id="btn-item1" onclick="removeItem('item1')">إلغاء ✖</button>
+            </div>
+            <div class="product-card" data-title="كنافة العجيبة" id="item2">
+                <img src="https://i.ibb.co/Y4jDNNxX/1771235293952-1.jpg">
+                <h3>كنافة العجيبة</h3>
+                <span class="price">1300 ريال</span>
+                <button class="add-btn" onclick="addItem('كنافة العجيبة', 1300, 'item2')">إضافة للسلة ➕</button>
+                <button class="remove-btn" id="btn-item2" onclick="removeItem('item2')">إلغاء ✖</button>
+            </div>
+        </div>
     </div>
-    <div class="product-card" id="item4">
-        <img src="https://i.ibb.co/LdbjbwgT/Screenshot-1.jpg">
-        <h3>فازلين طبي</h3>
-        <span class="price">5500 ريال</span>
-        <button class="add-btn" onclick="addItem('فازلين طبي', 5500, 'item4')">إضافة للسلة ➕</button>
-        <button class="remove-btn" id="btn-item4" onclick="removeItem('item4')">إلغاء الطلب ✖</button>
-    </div>
-    <div class="product-card" id="item5">
-        <img src="https://i.ibb.co/ZpFYnqSW/Screenshot.jpg">
-        <h3>زيت الورد</h3>
-        <span class="price">2300 ريال</span>
-        <button class="add-btn" onclick="addItem('زيت الورد', 2300, 'item5')">إضافة للسلة ➕</button>
-        <button class="remove-btn" id="btn-item5" onclick="removeItem('item5')">إلغاء الطلب ✖</button>
+
+    <div class="category-block" data-name="العناية">
+        <h2>🧴 قسم العناية</h2>
+        <div class="scroll-container">
+            <div class="product-card" data-title="كريم كلير مرطب" id="item3">
+                <img src="https://i.ibb.co/scVNQtx/1771265153960.png">
+                <h3>كريم كلير مرطب</h3>
+                <span class="price">3500 ريال</span>
+                <button class="add-btn" onclick="addItem('كريم كلير مرطب', 3500, 'item3')">إضافة للسلة ➕</button>
+                <button class="remove-btn" id="btn-item3" onclick="removeItem('item3')">إلغاء ✖</button>
+            </div>
+            <div class="product-card" data-title="فازلين طبي" id="item4">
+                <img src="https://i.ibb.co/LdbjbwgT/Screenshot-1.jpg">
+                <h3>فازلين طبي</h3>
+                <span class="price">5500 ريال</span>
+                <button class="add-btn" onclick="addItem('فازلين طبي', 5500, 'item4')">إضافة للسلة ➕</button>
+                <button class="remove-btn" id="btn-item4" onclick="removeItem('item4')">إلغاء ✖</button>
+            </div>
+            <div class="product-card" data-title="زيت الورد" id="item5">
+                <img src="https://i.ibb.co/ZpFYnqSW/Screenshot.jpg">
+                <h3>زيت الورد</h3>
+                <span class="price">2300 ريال</span>
+                <button class="add-btn" onclick="addItem('زيت الورد', 2300, 'item5')">إضافة للسلة ➕</button>
+                <button class="remove-btn" id="btn-item5" onclick="removeItem('item5')">إلغاء ✖</button>
+            </div>
+        </div>
     </div>
 </div>
 
 <div class="footer-bar">
     <div class="total-text">
-        الأصناف: <span id="count" style="color:#8b0000">0</span> | الإجمالي: <span id="total" style="color:#27ae60">0</span> ريال
+        الأصناف: <span id="count" style="color:var(--primary)">0</span> | الإجمالي: <span id="total" style="color:var(--secondary)">0</span> ريال
     </div>
     <button class="confirm-btn" onclick="sendOrder()">
-        تأكيد الطلب عبر واتساب 💬
+        تأكيد الطلب (واتساب) 💬
     </button>
 </div>
 
 <script>
     let cart = [];
+
+    // وظيفة البحث
+    function filterProducts() {
+        let input = document.getElementById('searchInput').value.toLowerCase();
+        let cards = document.getElementsByClassName('product-card');
+        let blocks = document.getElementsByClassName('category-block');
+
+        for (let i = 0; i < cards.length; i++) {
+            let title = cards[i].getAttribute('data-title').toLowerCase();
+            if (title.includes(input)) {
+                cards[i].classList.remove('hidden');
+            } else {
+                cards[i].classList.add('hidden');
+            }
+        }
+
+        // إخفاء القسم بالكامل إذا لم تظهر فيه أي نتيجة
+        for (let j = 0; j < blocks.length; j++) {
+            let visibleCards = blocks[j].querySelectorAll('.product-card:not(.hidden)');
+            if (visibleCards.length === 0) {
+                blocks[j].classList.add('hidden');
+            } else {
+                blocks[j].classList.remove('hidden');
+            }
+        }
+    }
+
     function addItem(name, price, id) {
         cart.push({ name, price, id });
         document.getElementById('btn-' + id).style.display = 'block';
         updateUI();
     }
+
     function removeItem(id) {
         const index = cart.findIndex(item => item.id === id);
         if (index > -1) { cart.splice(index, 1); }
@@ -94,19 +152,23 @@
         }
         updateUI();
     }
+
     function updateUI() {
         document.getElementById('count').innerText = cart.length;
         let total = cart.reduce((sum, item) => sum + item.price, 0);
         document.getElementById('total').innerText = total;
     }
+
     function sendOrder() {
         if (cart.length === 0) { alert("السلة فارغة!"); return; }
-        let phone = "967773903010";
-        let msg = "*طلب جديد من متجر مركز التوفير*%0A%0A";
+        let phone = "967773903010"; 
+        let msg = "*طلب جديد من متجر مركز التوفير*%0A";
+        msg += "*الموقع: عرما - المافود*%0A";
+        msg += "--------------------------%0A";
         cart.forEach((item, i) => {
-            let imgUrl = document.querySelector(`#${item.id} img`).src;
-            msg += `*${i+1}. ${item.name}*%0Aالسعر: ${item.price} ريال%0A🔗 صورة المنتج: ${imgUrl}%0A%0A`;
+            msg += `${i+1}. *${item.name}* (${item.price} ريال)%0A`;
         });
+        msg += "--------------------------%0A";
         msg += `*الإجمالي النهائي: ${document.getElementById('total').innerText} ريال*`;
         window.location.href = `https://wa.me/${phone}?text=${msg}`;
     }
