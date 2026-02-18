@@ -5,53 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>مركز التوفير للتسويق</title>
 
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <link rel="apple-touch-icon" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
-    <link rel="icon" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
-    <meta property="og:image" content="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
     
     <style>
         :root { --primary: #8b0000; --accent: #ff4d4d; --bg: #f8f9fa; --card-bg: #ffffff; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 100px; color: #222; overflow-x: hidden; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 100px; color: #222; }
 
-        /* الهيدر الاحترافي */
-        .app-header { background: linear-gradient(135deg, var(--primary), #5a0000); color: white; padding: 45px 20px 35px; text-align: center; border-radius: 0 0 35px 35px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+        .app-header { background: linear-gradient(135deg, var(--primary), #5a0000); color: white; padding: 45px 20px 35px; text-align: center; border-radius: 0 0 35px 35px; }
         .app-header h1 { margin: 0; font-size: 1.8rem; font-weight: 800; }
         .app-header p { margin: 10px 0 0; font-size: 0.9rem; opacity: 0.9; }
 
-        /* البحث */
         .search-area { padding: 0 20px; margin-top: -25px; }
-        .search-wrapper { background: white; display: flex; align-items: center; padding: 12px 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .search-wrapper { background: white; display: flex; align-items: center; padding: 12px 20px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .search-wrapper input { border: none; outline: none; width: 100%; font-family: 'Cairo'; font-size: 1rem; text-align: center; }
 
-        /* الأقسام */
-        .section-title { padding: 25px 20px 10px; font-size: 1.2rem; font-weight: 800; color: var(--primary); display: flex; align-items: center; justify-content: space-between; }
-        .horizontal-scroll { display: flex; overflow-x: auto; gap: 15px; padding: 10px 20px; scroll-snap-type: x mandatory; }
+        .section-title { padding: 25px 20px 10px; font-size: 1.2rem; font-weight: 800; color: var(--primary); }
+        .horizontal-scroll { display: flex; overflow-x: auto; gap: 15px; padding: 10px 20px; }
         .horizontal-scroll::-webkit-scrollbar { display: none; }
 
-        /* بطاقة المنتج */
-        .product-card { background: var(--card-bg); min-width: 165px; border-radius: 22px; padding: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.2s; border: 1px solid #f0f0f0; }
+        .product-card { background: var(--card-bg); min-width: 165px; border-radius: 22px; padding: 15px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
         .img-box { width: 100%; height: 130px; border-radius: 15px; background: #fff; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .img-box img { width: 100%; height: 100%; object-fit: contain; }
-        .product-card h3 { font-size: 0.9rem; margin: 10px 0; height: 40px; overflow: hidden; font-weight: 700; color: #333; }
+        .product-card h3 { font-size: 0.9rem; margin: 10px 0; height: 40px; overflow: hidden; font-weight: 700; }
         .price { color: #2e7d32; font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 12px; }
 
-        /* أزرار الكمية */
         .qty-controls { display: flex; justify-content: space-between; align-items: center; background: #f5f5f5; border-radius: 12px; padding: 4px; }
-        .qty-btn { width: 36px; height: 36px; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .qty-btn { width: 36px; height: 36px; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
         .plus { background: var(--primary); color: white; }
         .minus { background: #e0e0e0; color: #444; }
-        .qty-val { font-weight: 800; font-size: 1.1rem; min-width: 25px; }
 
-        /* شريط التنقل السفلي */
-        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); height: 85px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 -5px 25px rgba(0,0,0,0.08); border-radius: 30px 30px 0 0; z-index: 2000; padding: 0 15px; }
-        .nav-item { text-align: center; color: #777; text-decoration: none; font-size: 0.75rem; flex: 1; transition: 0.3s; }
-        .cart-trigger { background: var(--primary); color: white !important; width: 65px; height: 65px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: -50px; box-shadow: 0 8px 20px rgba(139, 0, 0, 0.35); border: 6px solid var(--bg); font-weight: bold; }
+        .nav-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; height: 85px; display: flex; justify-content: space-around; align-items: center; box-shadow: 0 -5px 25px rgba(0,0,0,0.08); border-radius: 30px 30px 0 0; z-index: 2000; }
+        .nav-item { text-align: center; color: #777; text-decoration: none; font-size: 0.75rem; flex: 1; }
+        .cart-trigger { background: var(--primary); color: white !important; width: 65px; height: 65px; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: -50px; border: 6px solid var(--bg); font-weight: bold; }
         
         #loading-screen { position: fixed; top:0; left:0; width:100%; height:100%; background: white; z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; }
         .loader { border: 6px solid #f3f3f3; border-top: 6px solid var(--primary); border-radius: 50%; width: 55px; height: 55px; animation: spin 1s linear infinite; }
@@ -114,7 +106,7 @@
             });
             document.getElementById('loading-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
-        } catch (e) { alert("تأكد من اتصالك بالإنترنت"); }
+        } catch (e) { console.log(e); }
     }
 
     function renderProduct(p) {
@@ -136,10 +128,7 @@
     function updateQty(name, price, img, change) {
         if(change === 1) { cart.push({name, price, img}); }
         else { const i = cart.findLastIndex(x => x.name === name); if(i !== -1) cart.splice(i, 1); }
-        
-        const count = cart.filter(x => x.name === name).length;
-        document.getElementById(`qty-${name}`).innerText = count;
-        
+        document.getElementById(`qty-${name}`).innerText = cart.filter(x => x.name === name).length;
         let total = cart.reduce((s, x) => s + x.price, 0);
         document.getElementById('total-price').innerText = total + " ريال";
         document.getElementById('cart-icon').innerHTML = cart.length > 0 ? `🛒 (${cart.length})` : '🛒';
@@ -154,6 +143,25 @@
 
     function sendOrder() {
         if(cart.length === 0) return alert("السلة فارغة!");
-        
-        let msg = "*طلب جديد - مركز التوفير للتسويق*%0A";
+        let msg = "*طلب جديد - مركز التوفير للتسويق*%0A%0A";
+        let summary = {};
+        cart.forEach(i => {
+            if(!summary[i.name]) summary[i.name] = { qty: 0, price: i.price, img: i.img };
+            summary[i.name].qty++;
+        });
+
+        for(let n in summary) {
+            msg += `📦 *${n}*%0A`;
+            msg += `الكمية: ${summary[n].qty} | السعر: ${summary[n].price * summary[n].qty} ريال%0A`;
+            msg += `🖼️ رابط الصورة:%0A${summary[n].img}%0A`; // وضع الرابط في سطر جديد ليظهر كـ رابط
+            msg += "------------------------------%0A";
+        }
+        msg += `%0A💰 *الإجمالي: ${cart.reduce((s, x) => s + x.price, 0)} ريال*`;
+        window.location.href = `https://wa.me/967773903010?text=${msg}`;
+    }
+    window.onload = loadApp;
+</script>
+</body>
+</html>
+
     
