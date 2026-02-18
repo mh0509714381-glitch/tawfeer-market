@@ -2,46 +2,51 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مركز التوفير التجاري - النسخة الماسية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>مركز التوفير للتسويق</title>
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
+    <link rel="icon" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
+
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --primary: #8b0000; --secondary: #27ae60; --bg: #f4f7f6; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 140px; overflow-x: hidden; }
+        :root { --primary: #8b0000; --accent: #a50000; --bg: #fdfdfd; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 160px; }
         
-        /* الهيدر */
-        .header { background: var(--primary); color: white; padding: 25px 10px; text-align: center; border-radius: 0 0 25px 25px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; }
-        .header h1 { margin: 0; font-size: 1.6rem; font-weight: 800; letter-spacing: 1px; }
+        /* الهيدر مع العبارة التسويقية */
+        .header { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; padding: 25px 10px; text-align: center; border-radius: 0 0 25px 25px; }
+        .header h1 { margin: 0; font-size: 1.5rem; font-weight: 800; }
+        .header .slogan { margin-top: 8px; font-size: 0.8rem; opacity: 0.9; }
 
-        /* شريط البحث */
         .search-container { padding: 15px; position: sticky; top: 0; background: var(--bg); z-index: 1000; }
-        .search-box { display: flex; align-items: center; background: white; padding: 5px 15px; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1.5px solid #eee; }
-        .search-input { width: 100%; padding: 10px; border: none; outline: none; font-family: 'Cairo'; font-size: 1rem; text-align: center; }
+        .search-box { display: flex; align-items: center; background: white; padding: 5px 15px; border-radius: 50px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1.2px solid #eee; }
+        .search-input { width: 100%; padding: 10px; border: none; outline: none; font-family: 'Cairo'; text-align: center; }
 
-        /* الأقسام والعناوين */
-        h2 { margin: 25px 15px 10px; color: var(--primary); border-right: 5px solid var(--primary); padding-right: 12px; font-size: 1.2rem; font-weight: 700; }
-        
-        /* السحب الأفقي */
-        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 15px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        h2 { margin: 25px 15px 10px; color: var(--primary); border-right: 5px solid var(--primary); padding-right: 12px; font-size: 1.1rem; }
+        .scroll-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 15px; scrollbar-width: none; }
         .scroll-container::-webkit-scrollbar { display: none; }
         
-        /* كرت المنتج */
-        .product-card { background: white; min-width: 165px; max-width: 165px; padding: 12px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.04); border: 1px solid #efefef; transition: transform 0.2s; }
-        .product-card:active { transform: scale(0.95); }
-        .img-container { width: 100%; height: 130px; border-radius: 15px; overflow: hidden; background: #f9f9f9; margin-bottom: 10px; border: 1px solid #f0f0f0; }
-        .product-card img { width: 100%; height: 100%; object-fit: cover; }
-        .product-card h3 { font-size: 0.9rem; margin: 8px 0; color: #333; height: 40px; overflow: hidden; line-height: 1.3; }
-        .price-tag { color: var(--secondary); font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 12px; }
+        .product-card { background: white; min-width: 150px; max-width: 150px; padding: 12px; border-radius: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f2f2f2; }
+        .img-container { width: 100%; height: 120px; border-radius: 15px; overflow: hidden; margin-bottom: 10px; }
+        .product-card img { width: 100%; height: 100%; object-fit: contain; }
+        .product-card h3 { font-size: 0.8rem; margin: 8px 0; height: 35px; overflow: hidden; color: #444; }
+        .price-tag { color: #2e7d32; font-weight: 800; font-size: 1rem; display: block; margin-bottom: 12px; }
         
-        .add-btn { background: var(--primary); color: white; border: none; padding: 10px; border-radius: 12px; width: 100%; cursor: pointer; font-family: 'Cairo'; font-weight: bold; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        /* أزرار التحكم الراقية */
+        .controls { display: flex; justify-content: center; align-items: center; gap: 8px; background: #f1f1f1; border-radius: 12px; padding: 4px; }
+        .btn-qty { border: none; width: 30px; height: 30px; border-radius: 8px; cursor: pointer; font-weight: 800; font-size: 1.1rem; display: flex; align-items: center; justify-content: center; }
+        .btn-add { background: var(--primary); color: white; }
+        .btn-remove { background: #ddd; color: #666; }
+        .qty-num { font-size: 0.9rem; font-weight: bold; min-width: 20px; }
 
-        /* الفوتر والسلة */
-        .footer-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 15px 0; box-shadow: 0 -5px 25px rgba(0,0,0,0.1); text-align: center; border-radius: 25px 25px 0 0; z-index: 2000; }
-        .cart-info { margin-bottom: 10px; font-weight: bold; font-size: 1rem; color: #444; }
-        .confirm-btn { background: var(--primary); color: white; border: none; width: 85%; padding: 16px; border-radius: 18px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(139,0,0,0.3); }
+        .footer-bar { position: fixed; bottom: 0; width: 100%; background: white; padding: 20px 0; box-shadow: 0 -8px 20px rgba(0,0,0,0.08); text-align: center; border-radius: 25px 25px 0 0; z-index: 2000; }
+        .confirm-btn { background: var(--primary); color: white; border: none; width: 85%; padding: 16px; border-radius: 18px; font-weight: 800; font-size: 1.1rem; cursor: pointer; }
 
-        /* شاشة التحميل */
-        #loading { text-align: center; padding: 80px 20px; font-weight: bold; color: var(--primary); }
+        #loading { text-align: center; padding: 100px 20px; color: var(--primary); font-weight: bold; }
         .spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 15px; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -49,120 +54,102 @@
 <body>
 
 <div class="header">
-    <h1>🛒 مركز التوفير التجاري</h1>
+    <h1>🛍️ مركز التوفير للتسويق</h1>
+    <div class="slogan">الخيار الأمثل للجودة والتوفير.. كل ما تحتاجه في مكان واحد</div>
 </div>
 
 <div class="search-container">
     <div class="search-box">
-        <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن اسم المنتج..." onkeyup="search()">
+        <input type="text" id="searchInput" class="search-input" placeholder="🔍 ابحث عن طلبك هنا..." onkeyup="search()">
     </div>
 </div>
 
-<div id="loading">
-    <div class="spinner"></div>
-    جاري تحميل المتجر الخرافي...
-</div>
+<div id="loading"><div class="spinner"></div>جاري تحميل المنتجات...</div>
 
 <div id="storeBody" style="display:none;">
-    <div id="sec-عناية">
-        <h2>🧴 قسم العناية</h2>
-        <div class="scroll-container" id="cont-عناية"></div>
-    </div>
-
-    <div id="sec-كماليات">
-        <h2>✨ قسم الكماليات</h2>
-        <div class="scroll-container" id="cont-كماليات"></div>
-    </div>
-
-    <div id="sec-منظفات">
-        <h2>🧼 قسم المنظفات</h2>
-        <div class="scroll-container" id="cont-منظفات"></div>
-    </div>
+    <div id="sec-عناية"><h2>🧴 قسم العناية</h2><div class="scroll-container" id="cont-عناية"></div></div>
+    <div id="sec-كماليات"><h2>✨ قسم الكماليات</h2><div class="scroll-container" id="cont-كماليات"></div></div>
+    <div id="sec-منظفات"><h2>🧼 قسم المنظفات</h2><div class="scroll-container" id="cont-منظفات"></div></div>
 </div>
 
 <div class="footer-bar">
-    <div class="cart-info">🛒 الأصناف: <span id="count">0</span> | الإجمالي: <span id="total">0</span> ريال</div>
+    <div style="margin-bottom:12px; font-weight:800;">🛒 السلة: <span id="count">0</span> | الإجمالي: <span id="total">0</span> ريال</div>
     <button class="confirm-btn" onclick="sendOrder()">تأكيد الطلب عبر واتساب 💬</button>
 </div>
 
 <script>
-    // ⚠️ ضع رابط الـ CSV الخاص بك من جوجل شيت هنا ⚠️
-    const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMnmjtBmfAT7L5emSo29uOd6pj_hp5yiJcpqbXSx91s7j5UgudEjzQQytEpJSIh8dVpQeZUm5oZ_bd/pub?output=csv";
-
+    // تأكد أنك قمت بعمل Publish to the web كـ CSV في جوجل شيت
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMnmjtBmfAT7L5emSo29uOd6pj_hp5yiJcpqbXSx91s7j5UgudEjzQQytEpJSIh8dVpQeZUm5oZ_bd/pub?output=csv";
+    
     let cart = [];
 
-    async function fetchProducts() {
+    async function fetchData() {
         try {
-            const response = await fetch(SHEET_CSV_URL);
-            const csvData = await response.text();
-            const rows = csvData.split('\n').slice(1); // تجاوز العناوين
-            
+            const response = await fetch(SHEET_URL);
+            const data = await response.text();
+            const rows = data.split('\n').slice(1);
             rows.forEach(row => {
-                const cols = row.split(',');
-                if(cols.length >= 5) {
-                    const product = {
-                        id: cols[0].trim(),
-                        name: cols[1].replace(/"/g, '').trim(),
-                        price: parseInt(cols[2].trim()),
-                        cat: cols[3].trim(),
-                        img: cols[4].replace(/"/g, '').trim()
+                const col = row.split(',');
+                if(col.length >= 5) {
+                    const p = {
+                        name: col[1].replace(/"/g, '').trim(),
+                        price: parseInt(col[2].trim()) || 0,
+                        cat: col[3].trim(),
+                        img: col[4].replace(/"/g, '').trim()
                     };
-                    if(product.name) renderProduct(product);
+                    if(p.name) renderProduct(p);
                 }
             });
             document.getElementById('loading').style.display = 'none';
             document.getElementById('storeBody').style.display = 'block';
         } catch (e) {
-            document.getElementById('loading').innerHTML = "❌ خطأ في الاتصال بالجدول!<br>تأكد من نشر الجدول كـ CSV";
+            document.getElementById('loading').innerHTML = "❌ خطأ في الاتصال بالجدول<br><small>تأكد من فتح المتجر عبر الرابط الرسمي (Online)</small>";
         }
     }
 
     function renderProduct(p) {
         let card = `
             <div class="product-card" data-name="${p.name}">
-                <div class="img-container"><img src="${p.img}" onerror="this.src='https://via.placeholder.com/150?text=No+Image'"></div>
+                <div class="img-container"><img src="${p.img}" onerror="this.src='https://via.placeholder.com/150'"></div>
                 <h3>${p.name}</h3>
                 <span class="price-tag">${p.price} ريال</span>
-                <button class="add-btn" onclick="add('${p.name}', ${p.price})">إضافة ➕</button>
+                <div class="controls">
+                    <button class="btn-qty btn-remove" onclick="updateQty('${p.name}', ${p.price}, -1)">-</button>
+                    <span class="qty-num" id="qty-${p.name}">0</span>
+                    <button class="btn-qty btn-add" onclick="updateQty('${p.name}', ${p.price}, 1)">+</button>
+                </div>
             </div>`;
-        
-        let targetId = 'cont-' + p.cat;
-        let targetContainer = document.getElementById(targetId);
-        if(targetContainer) {
-            targetContainer.innerHTML += card;
-        }
+        let target = document.getElementById('cont-' + p.cat);
+        if(target) target.innerHTML += card;
     }
 
-    function add(n, p) {
-        cart.push({n, p});
-        updateUI();
-    }
-
-    function updateUI() {
+    function updateQty(name, price, change) {
+        if(change === 1) { cart.push({name, price}); }
+        else { const i = cart.findLastIndex(x => x.name === name); if(i !== -1) cart.splice(i, 1); }
+        document.getElementById(`qty-${name}`).innerText = cart.filter(x => x.name === name).length;
         document.getElementById('count').innerText = cart.length;
-        document.getElementById('total').innerText = cart.reduce((s, x) => s + x.p, 0);
+        document.getElementById('total').innerText = cart.reduce((s, x) => s + x.price, 0);
     }
 
     function search() {
         let v = document.getElementById('searchInput').value.toLowerCase();
-        let cards = document.getElementsByClassName('product-card');
-        Array.from(cards).forEach(c => {
-            let name = c.getAttribute('data-name').toLowerCase();
-            c.style.display = name.includes(v) ? 'block' : 'none';
+        Array.from(document.getElementsByClassName('product-card')).forEach(c => {
+            c.style.display = c.getAttribute('data-name').toLowerCase().includes(v) ? 'block' : 'none';
         });
     }
 
     function sendOrder() {
-        if(cart.length === 0) return alert("السلة فارغة يا محمد!");
-        let message = "*طلب جديد من متجر مركز التوفير*%0A------------------%0A";
-        cart.forEach((item, index) => {
-            message += `${index + 1}. *${item.n}* - ${item.p} ريال%0A`;
-        });
-        message += `%0A*💰 الإجمالي النهائي: ${document.getElementById('total').innerText} ريال*`;
-        window.location.href = `https://wa.me/967773903010?text=${message}`;
+        if(cart.length === 0) return alert("سلتك فارغة!");
+        let msg = "*طلب جديد من تطبيق مركز التوفير*%0A";
+        let summary = {};
+        cart.forEach(i => summary[i.name] = (summary[i.name] || 0) + 1);
+        for(let n in summary) msg += `• ${n} (عدد: ${summary[n]})%0A`;
+        msg += `%0A*💰 الإجمالي: ${document.getElementById('total').innerText} ريال*`;
+        window.location.href = `https://wa.me/967773903010?text=${msg}`;
     }
 
-    window.onload = fetchProducts;
+    window.onload = fetchData;
 </script>
 </body>
-</html>
+    </html>
+
