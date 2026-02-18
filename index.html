@@ -5,49 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>مركز التوفير</title>
 
-    <meta name="theme-color" content="#8b0000">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="مركز التوفير">
+    <meta name="theme-color" content="#8b0000">
     
-    <link rel="icon" type="image/png" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
     <link rel="apple-touch-icon" href="https://i.ibb.co/Hf4Xwccp/Screenshot-1.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;800&display=swap" rel="stylesheet">
     
     <style>
         :root { --primary: #8b0000; --bg: #f8f9fa; }
-        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 90px; -webkit-user-select: none; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; padding-bottom: 90px; }
         
-        /* تصميم الهيدر بشكل يشبه التطبيقات الحقيقية */
-        .app-bar { background: var(--primary); color: white; padding: 40px 15px 20px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .app-bar h1 { margin: 0; font-size: 1.4rem; }
+        /* الهيدر */
+        .header { background: var(--primary); color: white; padding: 35px 15px 20px; text-align: center; border-radius: 0 0 30px 30px; }
+        .header h1 { margin: 0; font-size: 1.6rem; font-weight: 800; }
+        
+        /* البحث */
+        .search-container { padding: 15px; margin-top: -25px; }
+        .search-box { background: white; border: 1px solid #ddd; padding: 12px; border-radius: 15px; width: 100%; text-align: center; font-family: 'Cairo'; box-shadow: 0 4px 10px rgba(0,0,0,0.1); outline: none; }
 
-        .search-container { padding: 10px 15px; background: var(--primary); padding-bottom: 20px; border-radius: 0 0 25px 25px; }
-        .search-box { background: white; border: none; padding: 12px; border-radius: 15px; width: 100%; text-align: center; font-family: 'Cairo'; outline: none; }
-
-        .section-title { padding: 20px 15px 10px; font-weight: 800; color: var(--primary); font-size: 1.1rem; }
+        /* الأقسام */
+        .section-title { padding: 20px 15px 10px; font-weight: 800; color: var(--primary); font-size: 1.2rem; }
         .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 10px 15px; }
 
-        .card { background: white; border-radius: 18px; padding: 12px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; transition: 0.3s; }
-        .card:active { transform: scale(0.95); }
-        .card img { width: 100%; height: 120px; object-fit: contain; border-radius: 12px; margin-bottom: 10px; }
-        .card h3 { font-size: 0.85rem; margin: 5px 0; height: 35px; overflow: hidden; color: #333; }
-        .price { color: #2e7d32; font-weight: 800; font-size: 1rem; display: block; margin-bottom: 10px; }
+        /* بطاقة المنتج */
+        .card { background: white; border-radius: 20px; padding: 12px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border: 1px solid #f0f0f0; }
+        .card img { width: 100%; height: 120px; object-fit: contain; border-radius: 12px; }
+        .card h3 { font-size: 0.85rem; margin: 10px 0; height: 35px; overflow: hidden; }
+        .price { color: #2e7d32; font-weight: 800; font-size: 1.1rem; display: block; margin-bottom: 10px; }
 
-        .qty-controls { display: flex; justify-content: space-between; align-items: center; background: #f0f0f0; border-radius: 10px; padding: 4px; }
-        .q-btn { border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; font-size: 1.2rem; cursor: pointer; }
-        .q-plus { background: var(--primary); color: white; }
+        /* التحكم في السلة */
+        .qty-box { display: flex; justify-content: space-between; align-items: center; background: #f0f0f0; border-radius: 10px; padding: 5px; }
+        .btn-q { border: none; width: 32px; height: 32px; border-radius: 8px; font-weight: bold; font-size: 1.2rem; cursor: pointer; }
+        .plus { background: var(--primary); color: white; }
 
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; padding: 15px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); display: flex; justify-content: space-around; align-items: center; border-radius: 25px 25px 0 0; z-index: 2000; }
-        .cart-info { text-align: right; }
-        .cart-info span { display: block; font-size: 0.8rem; color: #666; }
-        .cart-info b { color: var(--primary); font-size: 1.1rem; }
-        .btn-send { background: var(--primary); color: white; border: none; padding: 12px 25px; border-radius: 15px; font-weight: bold; font-family: 'Cairo'; box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3); }
-
+        /* الشريط السفلي */
+        .footer { position: fixed; bottom: 0; width: 100%; background: white; padding: 15px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); display: flex; justify-content: space-around; align-items: center; border-radius: 25px 25px 0 0; z-index: 2000; }
+        .order-btn { background: var(--primary); color: white; border: none; padding: 12px 30px; border-radius: 15px; font-weight: bold; font-family: 'Cairo'; font-size: 1rem; }
+        
+        /* شاشة التحميل السريعة */
         #loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 9999; }
-        .spinner { border: 4px solid #f3f3f3; border-top: 4px solid var(--primary); border-radius: 50%; width: 45px; height: 45px; animation: spin 1s linear infinite; }
+        .spinner { border: 5px solid #f3f3f3; border-top: 5px solid var(--primary); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
 </head>
@@ -55,100 +57,101 @@
 
 <div id="loader">
     <div class="spinner"></div>
-    <p style="margin-top:15px; font-weight:bold; color:#8b0000;">مركز التوفير...</p>
+    <p style="margin-top:15px; font-weight:bold; color:#8b0000;">جاري تحميل مركز التوفير...</p>
 </div>
 
-<div class="app-bar">
+<div class="header">
     <h1>مركز التوفير للتسويق</h1>
 </div>
 
 <div class="search-container">
-    <input type="text" id="searchInput" class="search-box" placeholder="🔎 ابحث عن منتج..." onkeyup="search()">
+    <input type="text" id="srch" class="search-box" placeholder="🔍 ابحث عن طلبك هنا..." onkeyup="filter()">
 </div>
 
-<div id="main-content" style="display:none;">
-    <div class="section-title">🧴 العناية الشخصية</div>
-    <div class="product-grid" id="cat-عناية"></div>
-    
-    <div class="section-title">✨ الكماليات</div>
-    <div class="product-grid" id="cat-كماليات"></div>
-    
-    <div class="section-title">🧼 المنظفات</div>
-    <div class="product-grid" id="cat-منظفات"></div>
+<div id="content" style="display:none;">
+    <div id="sec-عناية"><div class="section-title">🧴 قسم العناية</div><div class="product-grid" id="cat-عناية"></div></div>
+    <div id="sec-كماليات"><div class="section-title">✨ قسم الكماليات</div><div class="product-grid" id="cat-كماليات"></div></div>
+    <div id="sec-منظفات"><div class="section-title">🧼 قسم المنظفات</div><div class="product-grid" id="cat-منظفات"></div></div>
 </div>
 
-<div class="bottom-nav">
-    <div class="cart-info">
-        <span>الإجمالي:</span>
-        <b id="totalPrice">0 ريال</b>
+<div class="footer">
+    <div style="text-align: right;">
+        <span style="font-size:0.8rem; color:#666;">الإجمالي:</span><br>
+        <b id="total" style="color:var(--primary); font-size:1.2rem;">0 ريال</b>
     </div>
-    <button class="btn-send" onclick="sendOrder()">تأكيد الطلب 🛒</button>
+    <button class="order-btn" onclick="send()">تأكيد الطلب 🛒</button>
 </div>
 
 <script>
-    const SHEET_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMnmjtBmfAT7L5emSo29uOd6pj_hp5yiJcpqbXSx91s7j5UgudEjzQQytEpJSIh8dVpQeZUm5oZ_bd/pub?output=csv";
+    // رابط الجوجل شيت الخاص بك
+    const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTMnmjtBmfAT7L5emSo29uOd6pj_hp5yiJcpqbXSx91s7j5UgudEjzQQytEpJSIh8dVpQeZUm5oZ_bd/pub?output=csv";
     let cart = [];
 
-    async function loadData() {
+    async function load() {
         try {
-            const res = await fetch(SHEET_URL);
+            const res = await fetch(URL);
+            if (!res.ok) throw new Error();
             const text = await res.text();
             const rows = text.split('\n').slice(1);
             rows.forEach(r => {
                 const c = r.split(',');
                 if(c.length >= 5) {
                     const p = { name: c[1].trim(), price: parseInt(c[2])||0, cat: c[3].trim(), img: c[4].trim() };
-                    render(p);
+                    add(p);
                 }
             });
             document.getElementById('loader').style.display='none';
-            document.getElementById('main-content').style.display='block';
-        } catch(e) { alert("تأكد من الإنترنت"); }
+            document.getElementById('content').style.display='block';
+        } catch(e) { 
+            // حل مشكلة التعليق: إظهار رسالة إذا فشل الإنترنت
+            document.getElementById('loader').innerHTML = "<p>يرجى التأكد من اتصال الإنترنت وحاول مجدداً</p>";
+        }
     }
 
-    function render(p) {
+    function add(p) {
         let h = `
-        <div class="card" data-name="${p.name}">
+        <div class="card" data-n="${p.name}">
             <img src="${p.img}" onerror="this.src='https://via.placeholder.com/150'">
             <h3>${p.name}</h3>
             <span class="price">${p.price} ريال</span>
-            <div class="qty-controls">
-                <button class="q-btn" onclick="update('${p.name}',${p.price},'${p.img}',-1)">-</button>
-                <span id="qty-${p.name}" style="font-weight:bold">0</span>
-                <button class="q-btn q-plus" onclick="update('${p.name}',${p.price},'${p.img}',1)">+</button>
+            <div class="qty-box">
+                <button class="btn-q" onclick="upd('${p.name}',${p.price},'${p.img}',-1)">-</button>
+                <span id="q-${p.name}" style="font-weight:bold">0</span>
+                <button class="btn-q plus" onclick="upd('${p.name}',${p.price},'${p.img}',1)">+</button>
             </div>
         </div>`;
         let target = document.getElementById('cat-'+p.cat);
         if(target) target.innerHTML += h;
     }
 
-    function update(name, price, img, chg) {
+    function upd(name, price, img, chg) {
         if(chg === 1) cart.push({name, price, img});
         else { let i = cart.findLastIndex(x => x.name === name); if(i!==-1) cart.splice(i, 1); }
-        document.getElementById('qty-'+name).innerText = cart.filter(x => x.name === name).length;
-        document.getElementById('totalPrice').innerText = cart.reduce((s, x) => s + x.price, 0) + " ريال";
+        document.getElementById('q-'+name).innerText = cart.filter(x => x.name === name).length;
+        document.getElementById('total').innerText = cart.reduce((s, x) => s + x.price, 0) + " ريال";
     }
 
-    function search() {
-        let v = document.getElementById('searchInput').value.toLowerCase();
+    function filter() {
+        let v = document.getElementById('srch').value.toLowerCase();
         document.querySelectorAll('.card').forEach(c => {
-            c.style.display = c.getAttribute('data-name').toLowerCase().includes(v) ? 'block' : 'none';
+            c.style.display = c.getAttribute('data-n').toLowerCase().includes(v) ? 'block' : 'none';
         });
     }
 
-    function sendOrder() {
+    function send() {
         if(cart.length === 0) return alert("السلة فارغة!");
-        let msg = "*طلب جديد من مركز التوفير*%0A";
-        let summary = {};
-        cart.forEach(i => { if(!summary[i.name]) summary[i.name]={q:0, p:i.price, img:i.img}; summary[i.name].q++; });
-        for(let n in summary) {
-            msg += `%0A📦 *${n}* (عدد: ${summary[n].q})`;
-            msg += `%0A🖼️ الصورة: ${summary[n].img}%0A`;
+        let m = "*طلب جديد من تطبيق مركز التوفير*%0A%0A";
+        let s = {};
+        cart.forEach(i => { if(!s[i.name]) s[i.name]={q:0, p:i.price, img:i.img}; s[i.name].q++; });
+        for(let n in s) {
+            m += `📦 *${n}* (الكمية: ${s[n].q})%0A`;
+            m += `🖼️ رابط الصورة: ${s[n].img}%0A`;
+            m += `--------------------%0A`;
         }
-        msg += `%0A💰 *الإجمالي: ${document.getElementById('totalPrice').innerText}*`;
-        window.location.href = `https://wa.me/967773903010?text=${msg}`;
+        m += `%0A💰 *الإجمالي: ${document.getElementById('total').innerText}*`;
+        window.location.href = `https://wa.me/967773903010?text=${m}`;
     }
-    window.onload = loadData;
+    window.onload = load;
 </script>
 </body>
 </html>
